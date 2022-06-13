@@ -12,8 +12,8 @@
     
     <!-- Add your site or application content here -->
     <div class="">
-	    <div id="msg-container">
-	    	<table>
+	    <div id="msg-container" style="width:80%;margin: 0 auto;">
+	    	<table style="width:100%">
           <thead>
             <tr>
               <th>OI</th>    
@@ -79,7 +79,7 @@
         $("#data-container").empty();
 
         filterData.forEach(a => {
-          $("#data-container").append('<tr><th>'+a.CE.openInterest+'</th><th>'+a.CE.pchangeinOpenInterest+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th>'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.PE.pchangeinOpenInterest+'</th><th>'+a.PE.openInterest+'</th></tr>')
+          $("#data-container").append('<tr><th>'+a.CE.openInterest+'</th><th>'+parseInt(a.CE.pchangeinOpenInterest)+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th>'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+parseInt(a.PE.pchangeinOpenInterest)+'</th><th>'+a.PE.openInterest+'</th></tr>')
         });
       }
     });
