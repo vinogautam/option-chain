@@ -104,7 +104,7 @@
         filterData.forEach(a => {
 		var ceAchievedPrice = a.strikePrice < data.records.underlyingValue ? 'ceachieved' : '';
 		var peAchievedPrice = a.strikePrice > data.records.underlyingValue ? 'peachieved' : '';
-          $("#data-container").append('<tr class="'+ceAchievedPrice+ ' '+peAchievedPrice+'"><th>'+a.CE.openInterest+'</th><th>'+parseInt(a.CE.changeinOpenInterest)+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th style="background:grey">'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.PE.totalTradedVolume+'</th><th>'+parseInt(a.PE.changeinOpenInterest)+'</th><th>'+a.PE.openInterest+'</th></tr>')
+          $("#data-container").append('<tr class="'+ceAchievedPrice+ ' '+peAchievedPrice+'"><td>'+a.CE.openInterest+'</td><td>'+parseInt(a.CE.changeinOpenInterest)+'</td><td>'+a.CE.totalTradedVolume+'</td><td>'+a.CE.lastPrice+'</td><td style="background:grey">'+a.strikePrice+'</td><td>'+a.PE.lastPrice+'</td><td>'+a.PE.totalTradedVolume+'</td><td>'+parseInt(a.PE.changeinOpenInterest)+'</td><td>'+a.PE.openInterest+'</td></tr>')
         });
 
 	$("#ceoi").text(data.filtered.CE.totOI);
