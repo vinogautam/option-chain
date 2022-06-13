@@ -73,7 +73,7 @@
 	var db = firebase.database().ref('/ism-option-chain');
 	$(document).ready(function(){
     db.on('value', function(s){
-      var data = s.value();
+      var data = s.val();
       if (data) {
         var filterData = data.filtered.data.filter(a => (a.strikePrice > data.records.underlyingValue) ? ((a.strikePrice - data.records.underlyingValue) < 1000) : ((data.records.underlyingValue - a.strikePrice) < 1000));
         $("#data-container").empty();
