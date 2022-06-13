@@ -129,6 +129,14 @@
 	$("#ceoi").text(data.filtered.CE.totOI);
 	$("#peoi").text(data.filtered.PE.totOI);
 	$("#banknifty").text(data.records.underlyingValue);
+	      
+	var ceoi = filterData.map(a => a.CE.openInterest);
+      var cefm = ceoi.indexOf(Math.max(...ceoi));
+      ceoi.splice(cefm,1);
+      var cesm = ceoi.indexOf(Math.max(...ceoi));
+	      
+	      $("#data-container tr:eq("+cefm+") td:eq(0)").addClass('first');
+	      $("#data-container tr:eq("+cesm+") td:eq(0)").addClass('second');
       }
     });
   });
