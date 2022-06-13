@@ -79,7 +79,7 @@
         $("#data-container").empty();
 
         filterData.forEach(a => {
-          $("#data-container").append('<tr><th>'+a.CE.openInterest+'</th><th>'+parseInt(a.CE.pchangeinOpenInterest)+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th>'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.PE.totalTradedVolume+'</th><th>'+parseInt(a.PE.pchangeinOpenInterest)+'</th><th>'+a.PE.openInterest+'</th></tr>')
+          $("#data-container").append('<tr><th>'+a.CE.openInterest+'</th><th>'+parseInt(a.CE.changeinOpenInterest)+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th>'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.PE.totalTradedVolume+'</th><th>'+parseInt(a.PE.changeinOpenInterest)+'</th><th>'+a.PE.openInterest+'</th></tr>')
         });
       }
     });
