@@ -76,11 +76,11 @@
         </table>
 	    </div>
 	    <div class="col-md-3">
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-		    <div><canvas id="myChart"></canvas></div>
+		    
+		    <div id="canvas"></div>
 	    </div>
     </div>
-	  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>  
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script>
@@ -143,8 +143,27 @@
 	      renderFirstSecond(filterData.map(a => a.PE.changeinOpenInterest), 7);
 	      renderFirstSecond(filterData.map(a => a.PE.openInterest), 8);
 	      
+	     firebase.database().ref('/ism-option-chain-oi').once('value', function(ss){
+		     var data2 = ss.val();
+      			if (data2) {
+				data2.CE.push(data.filtered.CE.totOI);
+				data2.PE.push(data.filtered.PE.totOI);
+				
+				if (data.CE.length > 50) {
+					data2.CE = data2.CE.splice(data2.CE.length-50, 50);
+				}
+				if (data.PE.length > 50) {
+					data2.PE = data2.PE.splice(data2.PE.length-50, 50);
+				}
+			} else {
+			   data2 = {CE: [data.filtered.CE.totOI], PE: [data.filtered.PE.totOI]};  
+		     }
+		     firebase.database().ref('/ism-option-chain-oi').set(data2);
+		     $("#canvas").empty();
+		     $("#canvas").append('<canvas id="myChart"></canvas>');
+		     drawChart(data2);
+	     }); 
 	      
-	      drawChart();
       }
     });
   });
@@ -158,19 +177,19 @@
 		      $("#data-container tr:eq("+cesm+") td:eq("+ind+")").addClass('second');
 		  }
 		  
-		  function drawChart(){
-			  var xValues = [100,200,300,400,500,600,700,800,900,1000];
+		  function drawChart(data){
+			  var xValues = data.CE.map((a,i) => i);
 
 				new Chart("myChart", {
 				  type: "line",
 				  data: {
 				    labels: xValues,
 				    datasets: [{ 
-				      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+				      data: data.CE,
 				      borderColor: "red",
 				      fill: false
 				    }, { 
-				      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+				      data: data.PE,
 				      borderColor: "green",
 				      fill: false
 				    }]
