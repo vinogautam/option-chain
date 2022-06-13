@@ -13,14 +13,17 @@
     <!-- Add your site or application content here -->
     <div class="">
 	    <div id="msg-container" style="width:80%;margin: 0 auto;">
-	    	<table style="width:100%">
+	    	<table style="width:100%" cellspacing="0" border="1">
           <thead>
+		  <tr>
+			  <th colspan="4">Call</th><th style="background:grey">&nbsp;&nbsp;</th><th  colspan="4">Put</th>
+		  </tr>
             <tr>
               <th>OI</th>    
               <th>Changing OI</th>
               <th>Volume</th>
               <th>LTP</th>
-              <th>Strike Price</th>
+              <th style="background:grey">Strike Price</th>
               <th>LTP</th>
               <th>Volume</th>
               <th>Changing OI</th>
@@ -30,6 +33,11 @@
           <tbody id="data-container">
             
           </tbody>
+	<tfoot>
+		<tr>
+			<th colspan="4">OI: <span id="ceoi"></span></th><th>&nbsp;&nbsp;</th><th  colspan="4">OI: <span id="peoi"></span></th>
+		  </tr>
+	</tfoot>
         </table>
 	    </div>
     </div>
@@ -79,8 +87,11 @@
         $("#data-container").empty();
 
         filterData.forEach(a => {
-          $("#data-container").append('<tr><th>'+a.CE.openInterest+'</th><th>'+parseInt(a.CE.changeinOpenInterest)+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th>'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.PE.totalTradedVolume+'</th><th>'+parseInt(a.PE.changeinOpenInterest)+'</th><th>'+a.PE.openInterest+'</th></tr>')
+          $("#data-container").append('<tr><th>'+a.CE.openInterest+'</th><th>'+parseInt(a.CE.changeinOpenInterest)+'</th><th>'+a.CE.totalTradedVolume+'</th><th>'+a.CE.lastPrice+'</th><th style="background:grey">'+a.strikePrice+'</th><th>'+a.PE.lastPrice+'</th><th>'+a.PE.totalTradedVolume+'</th><th>'+parseInt(a.PE.changeinOpenInterest)+'</th><th>'+a.PE.openInterest+'</th></tr>')
         });
+
+	$("#ceoi").text(data.filtered.CE.totOI);
+	$("#peoi").text(data.filtered.PE.totOI);
       }
     });
   });
