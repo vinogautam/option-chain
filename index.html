@@ -143,7 +143,7 @@
 		  
 		  function renderFirstSecond(ceoi, ind){
 		      var cefm = ceoi.indexOf(Math.max(...ceoi));
-		      ceoi.splice(cefm,1);
+		      ceoi.splice(cefm,1,0);
 		      var cesm = ceoi.indexOf(Math.max(...ceoi));
 
 		      $("#data-container tr:eq("+cefm+") td:eq("+ind+")").addClass('first');
