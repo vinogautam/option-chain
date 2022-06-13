@@ -146,22 +146,11 @@
 	     firebase.database().ref('/ism-option-chain-oi').once('value', function(ss){
 		     var data2 = ss.val();
       			if (data2) {
-				data2.CE.push(data.filtered.CE.totOI);
-				data2.PE.push(data.filtered.PE.totOI);
-				
-				if (data2.CE.length > 50) {
-					data2.CE = data2.CE.splice(data2.CE.length-50, 50);
-				}
-				if (data2.PE.length > 50) {
-					data2.PE = data2.PE.splice(data2.PE.length-50, 50);
-				}
-			} else {
-			   data2 = {CE: [data.filtered.CE.totOI], PE: [data.filtered.PE.totOI]};  
-		     }
-		     firebase.database().ref('/ism-option-chain-oi').set(data2);
-		     $("#canvas").empty();
-		     $("#canvas").append('<canvas id="myChart"></canvas>');
-		     drawChart(data2);
+				$("#canvas").empty();
+			     $("#canvas").append('<canvas id="myChart"></canvas>');
+			     drawChart(data2);
+			}
+		     
 	     }); 
 	      
       }
