@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
-	  <style>th{text-align:center}td{position:relative;padding-right:30px;}
+	  <style>
+		  th::nth-child(3), th::nth-child(4), th::nth-child(6), th::nth-child(7), td::nth-child(3), td::nth-child(4), td::nth-child(6), td::nth-child(7){
+			  display: none;
+		  }
+		  th{text-align:center}td{position:relative;padding-right:30px;}
 		  td.first:after {
     content: '1';
     background: #fff;
@@ -46,6 +50,15 @@
     
     <h1 style="text-align:center">Bank Nifty: <span id="banknifty"></span></h1>
     <div class="row">
+	    
+	    <div class="col-md-7">
+		    
+		    
+		    
+		    <!-- TradingView Widget BEGIN -->
+<iframe style="width:100%" src="https://in.investing.com/charts/advinion.php?pair_ID=17950&domain_ID=56&lang_ID=56&timezone_ID=23&refresh=16&interval=16&version=6.3.1.0&userId=0&site=in.investing.com" height="420"></iframe>
+		    <div id="canvas"></div>
+	    </div>
 	    <div id="msg-container" class="col-md-7">
 		    
 	    	<table style="width:100%;text-align:center;" cellspacing="0" border="1">
@@ -74,14 +87,6 @@
 		  </tr>
 	</tfoot>
         </table>
-	    </div>
-	    <div class="col-md-5">
-		    
-		    
-		    
-		    <!-- TradingView Widget BEGIN -->
-<iframe style="width:100%" src="https://in.investing.com/charts/advinion.php?pair_ID=17950&domain_ID=56&lang_ID=56&timezone_ID=23&refresh=16&interval=16&version=6.3.1.0&userId=0&site=in.investing.com" height="420"></iframe>
-		    <div id="canvas"></div>
 	    </div>
     </div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>  
