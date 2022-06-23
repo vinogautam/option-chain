@@ -85,7 +85,8 @@
 		  </tr>
 	</tfoot>
         </table>
-		    <div class="text-center" id="ts">
+		    <div class="text-center" >
+			    <span id="ts"></span> <span id="ago"></span>
 		    </div>
 	    </div>
     </div>
@@ -143,7 +144,7 @@
 
 	$("#ceoi").text(data.filtered.CE.totOI);
 	$("#peoi").text(data.filtered.PE.totOI);
-	//$("#banknifty").text(data.records.underlyingValue);
+	      
 	      $("#ts").text(data.records.timestamp);
 	      
 	renderFirstSecond(filterData.map(a => a.CE.openInterest), 0);
@@ -198,6 +199,13 @@
 				  }
 				});
 		  }
+		  
+		  setInterval(function(){
+			  if ($("#ts").text()) {
+			  	var timeVal = Math.round((new Date().getTime() - new Date($("#ts").text()).getTime()) / 60000);
+				  $("#ago").text(timeVal);
+			  }
+		  }, 10000);
 </script>
   </body>
 </html>
