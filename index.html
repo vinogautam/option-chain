@@ -203,7 +203,7 @@
 		  setInterval(function(){
 			  if ($("#ts").text()) {
 			  	var timeVal = Math.round((new Date().getTime() - new Date($("#ts").text()).getTime()) / 60000);
-				  $("#ago").text(timeVal);
+				  $("#ago").text('- '+timeVal+' mins ago');
 			  }
 		  }, 10000);
 </script>
