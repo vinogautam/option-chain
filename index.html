@@ -32,6 +32,16 @@
     position: absolute;
     right: 10px;border:1px solid;
 }
+		  td.third:after {
+    content: '3';
+    background: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;border:1px solid;
+}
 		#data-container tr.ceachieved td:nth-child(-n+4) {
 		    background: #f31141;   
 		}
@@ -172,9 +182,12 @@
 		      var cefm = ceoi.indexOf(Math.max(...ceoi));
 		      ceoi.splice(cefm,1,0);
 		      var cesm = ceoi.indexOf(Math.max(...ceoi));
+			ceoi.splice(cesm,1,0);
+		      var cetm = ceoi.indexOf(Math.max(...ceoi));
 
 		      $("#data-container tr:eq("+cefm+") td:eq("+ind+")").addClass('first');
 		      $("#data-container tr:eq("+cesm+") td:eq("+ind+")").addClass('second');
+			  $("#data-container tr:eq("+cetm+") td:eq("+ind+")").addClass('third');
 		  }
 		  
 		  function drawChart(data){
