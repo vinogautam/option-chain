@@ -162,8 +162,8 @@
       	renderFirstSecond(filterData.map(a => parseInt(a.CE.changeinOpenInterest)), 1);
 	      //renderFirstSecond(filterData.map(a => parseInt(a.CE.totalTradedVolume)), 2);
 	      //renderFirstSecond(filterData.map(a => parseInt(a.PE.totalTradedVolume)), 6);
-	      renderFirstSecond(filterData.map(a => parseInt(a.PE.changeinOpenInterest)), 4);
-	      renderFirstSecond(filterData.map(a => parseInt(a.PE.openInterest)), 5);
+	      renderFirstSecond(filterData.map(a => parseInt(a.PE.changeinOpenInterest)), 5);
+	      renderFirstSecond(filterData.map(a => parseInt(a.PE.openInterest)), 6);
 	      
 	     firebase.database().ref('/ism-option-chain-oi').once('value', function(ss){
 		     var data2 = ss.val();
