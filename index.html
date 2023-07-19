@@ -150,7 +150,7 @@
         filterData.forEach(a => {
 		var ceAchievedPrice = a.strikePrice < data.records.underlyingValue ? 'ceachieved' : '';
 		var peAchievedPrice = a.strikePrice > data.records.underlyingValue ? 'peachieved' : '';
-          $("#data-container").append('<tr class="'+ceAchievedPrice+ ' '+peAchievedPrice+'"><td>'+a.CE.openInterest+'</td><td>'+parseInt(a.CE.changeinOpenInterest)+'</td><td style="background:grey">'+a.strikePrice+'</td><td>'+parseInt(a.PE.changeinOpenInterest)+'</td><td>'+a.PE.openInterest+'</td></tr>')
+          $("#data-container").append('<tr class="'+ceAchievedPrice+ ' '+peAchievedPrice+'"><td>'+a.CE.openInterest+'</td><td>'+parseInt(a.CE.changeinOpenInterest)+'</td><td>'+a.CE.lastPrice+'</td><td style="background:grey">'+a.strikePrice+'</td><td>'+a.PE.lastPrice+'</td><td>'+parseInt(a.PE.changeinOpenInterest)+'</td><td>'+a.PE.openInterest+'</td></tr>')
         });
 
 	$("#ceoi").text(data.filtered.CE.totOI);
@@ -162,8 +162,8 @@
       	renderFirstSecond(filterData.map(a => parseInt(a.CE.changeinOpenInterest)), 1);
 	      //renderFirstSecond(filterData.map(a => parseInt(a.CE.totalTradedVolume)), 2);
 	      //renderFirstSecond(filterData.map(a => parseInt(a.PE.totalTradedVolume)), 6);
-	      renderFirstSecond(filterData.map(a => parseInt(a.PE.changeinOpenInterest)), 7);
-	      renderFirstSecond(filterData.map(a => parseInt(a.PE.openInterest)), 8);
+	      renderFirstSecond(filterData.map(a => parseInt(a.PE.changeinOpenInterest)), 4);
+	      renderFirstSecond(filterData.map(a => parseInt(a.PE.openInterest)), 5);
 	      
 	     firebase.database().ref('/ism-option-chain-oi').once('value', function(ss){
 		     var data2 = ss.val();
